@@ -2,15 +2,15 @@ package com.colinwd.kvstore.storage
 
 import java.util.concurrent.ConcurrentHashMap
 
-class InMemoryStore<K, V> : Store<K, V> {
+class InMemoryStore : Store {
 
-    private val backingStore = ConcurrentHashMap<K, V>()
+    private val backingStore = ConcurrentHashMap<String, String>()
 
-    override fun put(key: K, value: V) {
+    override fun put(key: String, value: String) {
         backingStore[key] = value
     }
 
-    override fun get(key: K): V? {
+    override fun get(key: String): String? {
         return backingStore[key]
     }
 }
